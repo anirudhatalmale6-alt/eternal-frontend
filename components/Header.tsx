@@ -130,43 +130,38 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav - matches WordPress responsive menu */}
+      {/* Mobile overlay */}
       {mobileOpen && (
-        <nav className="md:hidden bg-[#211f21] fixed top-[70px] left-0 right-0 bottom-0 z-[9999] overflow-y-auto">
-          <a href="/" className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
-            Home
-          </a>
-          <a href="/about-company" className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
-            About
-          </a>
-          {ABOUT_SUBMENU.map(({ href, label }) => (
-            <Link key={href} href={href} className="block text-left px-4 py-3 pl-8 border-t border-[#333] text-[#666] text-xs hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
-              - {label}
-            </Link>
-          ))}
-          {NAV_LINKS.map(({ href, label }) => (
-            <a key={href} href={href} className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
-              {label.charAt(0) + label.slice(1).toLowerCase()}
-            </a>
-          ))}
-          <div className="border-t border-[#333] px-4 py-3">
-            {wpUser ? (
-              <div className="flex flex-col gap-1">
-                <a href="/user/" className="text-[#669933] text-sm py-1" onClick={() => setMobileOpen(false)}>
-                  {wpUser}
-                </a>
-                <a href="/logout/" className="text-[#878787] text-sm py-1" onClick={() => setMobileOpen(false)}>
-                  Logout
-                </a>
-              </div>
-            ) : (
-              <a href="/login" className="text-[#878787] text-sm hover:text-white" onClick={() => setMobileOpen(false)}>
-                Login
-              </a>
-            )}
-          </div>
-        </nav>
+        <div className="md:hidden fixed inset-0 bg-black/60 z-[9998]" onClick={() => setMobileOpen(false)} />
       )}
+
+      {/* Mobile Nav - matches WordPress side panel menu */}
+      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-full bg-[#211f21] z-[9999] pt-[70px] overflow-y-auto shadow-[-18px_0_40px_rgba(0,0,0,0.55)] transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <a href="/about-company" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          About
+        </a>
+        <a href="/store/category" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          Store
+        </a>
+        <a href="/user/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          Profile
+        </a>
+        <a href="/verify/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          Verify
+        </a>
+        <a href="/top-up/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          Top-Up
+        </a>
+        {wpUser ? (
+          <a href="/logout/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+            Log Out
+          </a>
+        ) : (
+          <a href="/login" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+            Account
+          </a>
+        )}
+      </nav>
     </header>
   );
 }
