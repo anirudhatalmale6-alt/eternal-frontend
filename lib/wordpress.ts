@@ -1,4 +1,5 @@
-const WP_API_URL = process.env.NEXT_PUBLIC_WP_API_URL || 'https://www.eternalorganizer.com/wp-json';
+const WP_PUBLIC_URL = process.env.NEXT_PUBLIC_WP_API_URL || 'https://www.eternalorganizer.com/wp-json';
+const WP_API_URL = process.env.WP_INTERNAL_API_URL || WP_PUBLIC_URL;
 
 export interface WPPost {
   id: number;
