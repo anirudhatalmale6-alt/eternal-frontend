@@ -130,38 +130,41 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav - matches WordPress responsive menu */}
       {mobileOpen && (
-        <nav className="md:hidden bg-black border-t border-[#111] px-4 pb-4">
-          <ul className="font-dodger flex flex-col gap-3 text-[11px] tracking-[0.2em] pt-3">
-            <li>
-              <span className="text-[#878787] block py-1 mb-1">ABOUT</span>
-              <div className="pl-4 flex flex-col gap-2">
-                {ABOUT_SUBMENU.map(({ href, label }) => (
-                  <Link key={href} href={href} className="text-[#666] hover:text-white transition-colors" onClick={() => setMobileOpen(false)}>
-                    {label}
-                  </Link>
-                ))}
+        <nav className="md:hidden bg-[#211f21] fixed top-[70px] left-0 right-0 bottom-0 z-[9999] overflow-y-auto">
+          <a href="/" className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
+            Home
+          </a>
+          <a href="/about-company" className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
+            About
+          </a>
+          {ABOUT_SUBMENU.map(({ href, label }) => (
+            <Link key={href} href={href} className="block text-left px-4 py-3 pl-8 border-t border-[#333] text-[#666] text-xs hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
+              - {label}
+            </Link>
+          ))}
+          {NAV_LINKS.map(({ href, label }) => (
+            <a key={href} href={href} className="block text-left px-4 py-3 border-t border-[#333] text-[#878787] text-sm hover:text-white hover:bg-[#2a2a2a] transition-colors" onClick={() => setMobileOpen(false)}>
+              {label.charAt(0) + label.slice(1).toLowerCase()}
+            </a>
+          ))}
+          <div className="border-t border-[#333] px-4 py-3">
+            {wpUser ? (
+              <div className="flex flex-col gap-1">
+                <a href="/user/" className="text-[#669933] text-sm py-1" onClick={() => setMobileOpen(false)}>
+                  {wpUser}
+                </a>
+                <a href="/logout/" className="text-[#878787] text-sm py-1" onClick={() => setMobileOpen(false)}>
+                  Logout
+                </a>
               </div>
-            </li>
-            {NAV_LINKS.map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} className="text-[#878787] hover:text-white transition-colors block py-1" onClick={() => setMobileOpen(false)}>
-                  {label}
-                </Link>
-              </li>
-            ))}
-            <li className="border-t border-[#222] pt-3">
-              {wpUser ? (
-                <div className="flex flex-col gap-2">
-                  <a href="/user/" className="text-[#669933]" onClick={() => setMobileOpen(false)}>{wpUser}</a>
-                  <a href="/logout/" className="text-[#878787]" onClick={() => setMobileOpen(false)}>LOG OUT</a>
-                </div>
-              ) : (
-                <a href="/login" className="text-[#878787] hover:text-white" onClick={() => setMobileOpen(false)}>LOG IN</a>
-              )}
-            </li>
-          </ul>
+            ) : (
+              <a href="/login" className="text-[#878787] text-sm hover:text-white" onClick={() => setMobileOpen(false)}>
+                Login
+              </a>
+            )}
+          </div>
         </nav>
       )}
     </header>
