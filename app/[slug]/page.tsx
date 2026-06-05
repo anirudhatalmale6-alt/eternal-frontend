@@ -60,7 +60,7 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
 
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
+      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
         <article className="w-full lg:w-[75%]">
           <div className="border-t border-b border-[#570000] py-3 mb-6">
             <div className="flex justify-between items-start">
@@ -135,7 +135,7 @@ function PageView({ page }: { page: Awaited<ReturnType<typeof getPageBySlug>> & 
 
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[1200px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
+      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
         <div className="w-full lg:w-[75%]">
           <h1
             className="text-3xl font-bold text-white mb-6 border-b border-[#570000] pb-3"

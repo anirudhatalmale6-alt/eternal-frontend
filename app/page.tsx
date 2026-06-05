@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: HomeProps) {
     <div className="min-h-screen bg-[#0D0D0D] text-white font-sans">
 
       {/* Categories */}
-      <div className="max-w-[1200px] mx-auto mt-8 mb-8 px-4">
+      <div className="max-w-[960px] mx-auto mt-8 mb-8 px-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { href: '/category/esports', icon: Gamepad2, label: 'eSports' },
@@ -45,7 +45,7 @@ export default async function Home({ searchParams }: HomeProps) {
       </div>
 
       {/* Main Layout */}
-      <div className="max-w-[1200px] mx-auto px-4 pb-12 flex flex-col lg:flex-row gap-5">
+      <div className="max-w-[960px] mx-auto px-4 pb-12 flex flex-col lg:flex-row gap-5">
 
         {/* Main Content */}
         <div className="w-full lg:w-[73%] flex flex-col gap-5">

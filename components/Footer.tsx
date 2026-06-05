@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="w-full bg-[#0D0D0D] pt-[30px] pb-[30px]">
       
       {/* Mengikuti styling .footer: max-width 1200px, margin auto, padding 20px */}
-      <div className="max-w-[1200px] mx-auto p-[20px] text-center flex flex-col items-center">
+      <div className="max-w-[960px] mx-auto p-[20px] text-center flex flex-col items-center">
         
         {/* ================= Logo ================= */}
         <a href="https://www.eternalorganizer.com" target="_blank" rel="noopener noreferrer" className="mb-2 hover:opacity-80 transition-opacity">
