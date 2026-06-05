@@ -2,6 +2,7 @@
 const nextConfig = {
   output: 'standalone',
   poweredByHeader: false,
+  trailingSlash: true,
   experimental: {
     linkPrefetch: false,
   },
