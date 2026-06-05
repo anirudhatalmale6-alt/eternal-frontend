@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Gamepad2, MoreHorizontal, Cpu, Car } from 'lucide-react';
+import { Gamepad2, MoreHorizontal, Cpu, Car, Play } from 'lucide-react';
 import Sidebar from '@/components/Sidebar';
 import PostCard from '@/components/PostCard';
 import { getPosts } from '@/lib/wordpress';
@@ -54,88 +54,109 @@ export default async function Home() {
           {/* Eternal Entertainment */}
           <div className="bg-[#080808] border border-[#1a1a1a] rounded overflow-hidden shadow-xl">
             <div className="bg-gradient-to-r from-[#4a0000] via-[#8b0000] to-[#4a0000] py-2.5 border-b border-red-950/50">
-              <h2 className="text-center text-white font-serif tracking-[0.15em] text-sm">Eternal Entertainment</h2>
+              <h2 className="text-center text-white font-serif tracking-[0.15em] text-sm italic">Eternal Entertainment</h2>
             </div>
 
-            <div className="p-5">
-              {/* Play Access Section */}
-              <div className="flex flex-col md:flex-row items-center justify-center gap-8 py-6 mb-5 border-b border-gray-800/50">
-                <div className="relative w-[130px] h-[170px] rounded-lg overflow-hidden border border-gray-700/50 shadow-[0_0_20px_rgba(153,0,0,0.2)]">
-                  <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/10/syncmeta-300x118.png"
-                    alt="Character Card"
-                    fill
-                    className="object-cover"
-                    sizes="130px"
-                  />
-                </div>
-                <div className="text-center">
-                  <h1 className="font-dodger text-5xl text-transparent bg-clip-text bg-gradient-to-b from-yellow-400 via-orange-500 to-red-600 mb-3 tracking-[0.15em]">PLAY</h1>
-                  <p className="text-xs text-gray-300 font-bold uppercase tracking-widest mb-1">Get The Access Now</p>
-                  <Link href="/license" className="text-[10px] text-blue-400/80 hover:text-blue-300 transition-colors">
-                    https://www.eternalorganizer.com/license
-                  </Link>
-                </div>
+            <div className="p-4">
+              {/* Video + Play Access */}
+              <div className="mb-4">
+                <video
+                  controls
+                  preload="metadata"
+                  poster="https://bunny.eternalorganizer.com/wp-content/uploads/2020/08/eternaljump.jpg"
+                  className="w-full rounded border border-gray-800"
+                >
+                  <source src="https://bunny.eternalorganizer.com/videos/etnaground.webm" type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
 
-              {/* Games Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {/* Cearlyn Banner */}
-                <Link href="/cearlyn" className="relative aspect-video rounded overflow-hidden group border border-purple-900/30 shadow-lg">
+              {/* Cearlyn Banner */}
+              <div className="mb-4">
+                <Link href="/cearlyn" className="relative block w-full aspect-[16/9] rounded overflow-hidden group border border-purple-900/30">
                   <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2021/04/vipmedia.jpg.webp"
-                    alt="Cearlyn Banner"
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2019/02/learn-1.jpg"
+                    alt="Cearlyn - Princess into an Eternal World"
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 800px"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 font-dodger text-sm text-white/90 tracking-wider">CEARLYN</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <span className="font-dodger text-2xl text-white/90 tracking-wider drop-shadow-lg">CEARLYN</span>
+                    <p className="text-[10px] text-gray-300 italic mt-0.5">Princess into an Eternal World</p>
+                  </div>
+                </Link>
+              </div>
+
+              {/* Game Cards - 3 columns with play buttons */}
+              <div className="grid grid-cols-3 gap-3">
+                {/* Eternal Jump */}
+                <Link href="/jumpgame" className="relative aspect-[3/4] rounded overflow-hidden group border border-orange-900/30">
+                  <Image
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/08/eternaljump.jpg"
+                    alt="Eternal Jump"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 33vw, 250px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-0 right-0 text-center">
+                    <span className="font-dodger text-[10px] text-white tracking-wider uppercase drop-shadow">Eternal Jump</span>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+                    </div>
+                  </div>
                 </Link>
 
-                {/* Game Cards */}
-                <div className="grid grid-rows-2 gap-3">
-                  <div className="grid grid-cols-2 gap-3">
-                    <Link href="/jumpgame" className="relative rounded overflow-hidden group border border-orange-900/30">
-                      <Image
-                        src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/playoptimize.jpg"
-                        alt="Eternal Jump"
-                        width={200}
-                        height={100}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <span className="font-dodger text-[10px] text-white/90 tracking-wider uppercase">Eternal Jump</span>
-                      </div>
-                    </Link>
-                    <Link href="/leapgame" className="relative rounded overflow-hidden group border border-red-900/30">
-                      <Image
-                        src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/vipoptimize.jpg"
-                        alt="Eternal Leap"
-                        width={200}
-                        height={100}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                        <span className="font-dodger text-[10px] text-white/90 tracking-wider uppercase">Eternal Leap</span>
-                      </div>
-                    </Link>
+                {/* Eternal Leap */}
+                <Link href="/leapgame" className="relative aspect-[3/4] rounded overflow-hidden group border border-red-900/30">
+                  <Image
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/vipoptimize.jpg"
+                    alt="Eternal Leap"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 33vw, 250px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-0 right-0 text-center">
+                    <span className="font-dodger text-[10px] text-white tracking-wider uppercase drop-shadow">Eternal Leap</span>
                   </div>
-                  <Link href="/flygame" className="relative rounded overflow-hidden group border border-gray-800">
-                    <Image
-                      src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/cartoptimize.jpg"
-                      alt="Eternal Fly"
-                      width={400}
-                      height={100}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                      <span className="font-dodger text-sm text-white/90 tracking-[0.2em] uppercase">Eternal Fly</span>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
+
+                {/* Eternal Fly */}
+                <Link href="/flygame" className="relative aspect-[3/4] rounded overflow-hidden group border border-gray-700/30">
+                  <Image
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/cartoptimize.jpg"
+                    alt="Eternal Fly"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 33vw, 250px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-0 right-0 text-center">
+                    <span className="font-dodger text-[10px] text-white tracking-wider uppercase drop-shadow">Eternal Fly</span>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <Play className="w-5 h-5 text-white fill-white ml-0.5" />
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
+          </div>
+
+          {/* Welcome to Etnaverse */}
+          <div className="bg-gradient-to-r from-[#4a0000] via-[#8b0000] to-[#4a0000] py-3 rounded border border-red-950/50 text-center">
+            <span className="font-dodger text-sm text-white tracking-[0.2em] uppercase">Welcome to Etnaverse Playgrounds</span>
           </div>
 
           {/* Latest News */}
