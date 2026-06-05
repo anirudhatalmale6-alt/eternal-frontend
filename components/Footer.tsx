@@ -20,13 +20,13 @@ export default function Footer() {
         </a>
         
         {/* ================= Teks Copyright & Trademark ================= */}
-        <div className="text-[#878787] text-[18px] leading-relaxed mb-1 font-sans">
+        <div className="text-[#878787] text-[11px] leading-relaxed mb-1 font-sans">
           Eternal Creative Networks © {new Date().getFullYear()} All right Reserved.<br />
           All trademarks are property of their respective owners in the US and other countries.
         </div>
 
         {/* ================= Menu Links ================= */}
-        <div className="text-[#878787] text-[18px] font-sans flex flex-wrap justify-center items-center gap-x-1.5 mt-2">
+        <div className="text-[#878787] text-[11px] font-sans flex flex-wrap justify-center items-center gap-x-1.5 mt-2">
           <Link href="https://status.eternalorganizer.com/" className="hover:text-white transition-colors">Status</Link>
           <span>|</span>
           <Link href="https://www.eternalorganizer.com/redeem/" className="hover:text-white transition-colors">Redeem</Link>

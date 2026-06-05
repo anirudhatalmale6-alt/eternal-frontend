@@ -6,7 +6,19 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'bunny.eternalorganizer.com',
         port: '',
-        pathname: '/**', // Mengizinkan semua path gambar dari domain ini
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.eternalorganizer.com',
+        port: '',
+        pathname: '/wp-content/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'secure.gravatar.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
