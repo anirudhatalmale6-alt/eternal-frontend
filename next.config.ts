@@ -1,6 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        { key: 'X-Powered-By', value: 'Eternal-NextJS' },
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+      ],
+    },
+    {
+      source: '/_next/static/:path*',
+      headers: [
+        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+      ],
+    },
+    {
+      source: '/:path((?!_next|api).*)',
+      headers: [
+        { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
+      ],
+    },
+  ],
   images: {
     remotePatterns: [
       {
