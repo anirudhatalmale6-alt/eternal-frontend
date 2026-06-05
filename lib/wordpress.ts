@@ -107,6 +107,12 @@ export async function getPageBySlug(slug: string): Promise<WPPage | null> {
   return pages[0] || null;
 }
 
+export function rewriteContentUrls(html: string): string {
+  return html
+    .replace(/https?:\/\/www\.eternalorganizer\.com\/wp-content\/uploads\//g, 'https://bunny.eternalorganizer.com/wp-content/uploads/')
+    .replace(/https?:\/\/eternalorganizer\.com\/wp-content\/uploads\//g, 'https://bunny.eternalorganizer.com/wp-content/uploads/');
+}
+
 export function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').trim();
 }

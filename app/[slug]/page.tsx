@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPostBySlug, getPageBySlug, formatDate, getAuthorName, getFeaturedImage, getPostCategories, stripHtml } from '@/lib/wordpress';
+import { getPostBySlug, getPageBySlug, formatDate, getAuthorName, getFeaturedImage, getPostCategories, stripHtml, rewriteContentUrls } from '@/lib/wordpress';
 import PageLayout from '@/components/PageLayout';
 import PremiumGate from '@/components/PremiumGate';
 
@@ -54,7 +54,7 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
         prose-a:text-red-500 prose-a:no-underline hover:prose-a:text-red-400
         prose-img:rounded-md prose-img:mx-auto
         prose-strong:text-white"
-      dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+      dangerouslySetInnerHTML={{ __html: rewriteContentUrls(post.content.rendered) }}
     />
   );
 
@@ -150,7 +150,7 @@ function PageView({ page }: { page: Awaited<ReturnType<typeof getPageBySlug>> & 
               prose-headings:text-white prose-p:text-gray-300
               prose-a:text-red-500 prose-a:no-underline
               prose-img:rounded-md"
-            dangerouslySetInnerHTML={{ __html: page.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: rewriteContentUrls(page.content.rendered) }}
           />
         </div>
     </PageLayout>
