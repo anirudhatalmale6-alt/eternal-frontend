@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  poweredByHeader: false,
+  experimental: {
+    linkPrefetch: false,
+  },
   headers: async () => [
     {
       source: '/:path*',

@@ -16,26 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const speculationRules = {
-    prerender: [
-      {
-        source: "document",
-        where: { and: [{ href_matches: "/*" }] },
-        eagerness: "conservative",
-      },
-    ],
-  };
-
   return (
     <html lang="en">
-      <head>
-        <script
-          type="speculationrules"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(speculationRules),
-          }}
-        />
-      </head>
+      <head></head>
 
       <body className="antialiased selection:bg-[#c0392b] selection:text-white flex flex-col min-h-screen">
 
