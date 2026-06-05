@@ -1,11 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useAuthStore } from '@/stores/auth-store';
 
 const ABOUT_SUBMENU = [
   { href: '/about-company', label: 'Company' },
@@ -21,11 +20,31 @@ const NAV_LINKS = [
   { href: '/feeds', label: 'FEEDS' },
 ];
 
+function getWPLoggedInUser(): string | null {
+  if (typeof document === 'undefined') return null;
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const trimmed = cookie.trim();
+    if (trimmed.startsWith('wordpress_logged_in_')) {
+      const value = trimmed.split('=')[1];
+      if (value) {
+        const username = decodeURIComponent(value.split('%7C')[0] || value.split('|')[0]);
+        return username;
+      }
+    }
+  }
+  return null;
+}
+
 export default function Header() {
-  const { isLoggedIn, displayName, logout } = useAuthStore();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [wpUser, setWpUser] = useState<string | null>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    setWpUser(getWPLoggedInUser());
+  }, []);
 
   const isActive = (href: string) => pathname.startsWith(href);
 
@@ -49,22 +68,21 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center">
           <ul className="font-dodger flex items-center list-none m-0 p-0 space-x-[30px] lg:space-x-[40px] text-[10px] tracking-[0.2em]">
-            {/* About with dropdown */}
             <li
               className="relative"
               onMouseEnter={() => setAboutOpen(true)}
               onMouseLeave={() => setAboutOpen(false)}
             >
               <button className="text-[#878787] hover:text-white transition-colors duration-300 flex items-center space-x-1.5">
-                ABOUT <span className="text-[7px] mt-[1px] font-sans">▼</span>
+                ABOUT <span className="text-[7px] mt-[1px] font-sans">&#9660;</span>
               </button>
               {aboutOpen && (
-                <div className="absolute top-full left-0 mt-1 bg-black border border-[#222] rounded shadow-xl min-w-[140px] py-1 z-50">
+                <div className="absolute top-full left-0 mt-1 bg-[#111] border border-[#2a2a2a] rounded-md shadow-xl min-w-[140px] py-1 z-50">
                   {ABOUT_SUBMENU.map(({ href, label }) => (
                     <Link
                       key={href}
                       href={href}
-                      className="block px-4 py-2 text-[10px] text-[#878787] hover:text-white hover:bg-[#1a1a1a] transition-colors tracking-[0.15em]"
+                      className="block px-3 py-2 text-[10px] text-[#c9c9c9] hover:text-white hover:bg-white/5 transition-colors tracking-[0.1em]"
                     >
                       {label}
                     </Link>
@@ -88,19 +106,19 @@ export default function Header() {
               </li>
             ))}
             <li>
-              {isLoggedIn ? (
+              {wpUser ? (
                 <span className="flex items-center gap-3">
-                  <Link href="/profile" className="text-[#669933] hover:text-white transition-colors duration-300">
-                    {displayName || 'Profile'}
-                  </Link>
-                  <button onClick={logout} className="text-[#878787] hover:text-white transition-colors duration-300">
+                  <a href="/user/" className="text-[#669933] hover:text-white transition-colors duration-300">
+                    {wpUser}
+                  </a>
+                  <a href="/logout/" className="text-[#878787] hover:text-white transition-colors duration-300">
                     LOG OUT
-                  </button>
+                  </a>
                 </span>
               ) : (
-                <Link href="/login" className="text-[#878787] hover:text-white transition-colors duration-300">
+                <a href="/login/" className="text-[#878787] hover:text-white transition-colors duration-300">
                   LOG IN
-                </Link>
+                </a>
               )}
             </li>
           </ul>
@@ -134,13 +152,13 @@ export default function Header() {
               </li>
             ))}
             <li className="border-t border-[#222] pt-3">
-              {isLoggedIn ? (
+              {wpUser ? (
                 <div className="flex flex-col gap-2">
-                  <Link href="/profile" className="text-[#669933]" onClick={() => setMobileOpen(false)}>{displayName || 'Profile'}</Link>
-                  <button onClick={() => { logout(); setMobileOpen(false); }} className="text-[#878787] text-left">LOG OUT</button>
+                  <a href="/user/" className="text-[#669933]" onClick={() => setMobileOpen(false)}>{wpUser}</a>
+                  <a href="/logout/" className="text-[#878787]" onClick={() => setMobileOpen(false)}>LOG OUT</a>
                 </div>
               ) : (
-                <Link href="/login" className="text-[#878787] hover:text-white" onClick={() => setMobileOpen(false)}>LOG IN</Link>
+                <a href="/login/" className="text-[#878787] hover:text-white" onClick={() => setMobileOpen(false)}>LOG IN</a>
               )}
             </li>
           </ul>
