@@ -95,10 +95,10 @@ export default function Header() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`transition-colors duration-300 ${
+                  className={`transition-colors duration-300 px-2 py-1 ${
                     isActive(href)
-                      ? 'text-white border border-white/40 rounded-sm px-2 py-1'
-                      : 'text-[#878787] hover:text-white'
+                      ? 'text-white border border-white/30 rounded-sm'
+                      : 'text-[#878787] hover:text-white border border-transparent'
                   }`}
                 >
                   {label}
@@ -116,7 +116,7 @@ export default function Header() {
                   </a>
                 </span>
               ) : (
-                <a href="/login/" className="text-[#878787] hover:text-white transition-colors duration-300">
+                <a href="/login" className="text-[#878787] hover:text-white transition-colors duration-300">
                   LOG IN
                 </a>
               )}
@@ -158,7 +158,7 @@ export default function Header() {
                   <a href="/logout/" className="text-[#878787]" onClick={() => setMobileOpen(false)}>LOG OUT</a>
                 </div>
               ) : (
-                <a href="/login/" className="text-[#878787] hover:text-white" onClick={() => setMobileOpen(false)}>LOG IN</a>
+                <a href="/login" className="text-[#878787] hover:text-white" onClick={() => setMobileOpen(false)}>LOG IN</a>
               )}
             </li>
           </ul>
