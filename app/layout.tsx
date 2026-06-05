@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -22,13 +21,19 @@ export default function RootLayout({
 
       <body className="antialiased selection:bg-[#c0392b] selection:text-white flex flex-col min-h-screen">
 
-        <Script id="sw-register" strategy="afterInteractive">
+        {/* Unregister any stale Next.js service worker */}
+        <Script id="sw-cleanup" strategy="afterInteractive">
           {`
             if ('serviceWorker' in navigator) {
-              window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js', { scope: '/' })
-                  .then(function(reg) { console.log('SW Omega Next.js Aktif!'); })
-                  .catch(function(err) { console.error('SW Gagal:', err); });
+              navigator.serviceWorker.getRegistrations().then(function(regs) {
+                regs.forEach(function(reg) {
+                  if (reg.active && reg.active.scriptURL.includes('/sw.js')) {
+                    reg.unregister();
+                    caches.keys().then(function(keys) {
+                      keys.forEach(function(key) { if(key.includes('omega')) caches.delete(key); });
+                    });
+                  }
+                });
               });
             }
           `}
@@ -36,7 +41,6 @@ export default function RootLayout({
 
         <Header />
 
-        {/* Content area */}
         <div className="flex-grow pt-[70px] w-full">
           {children}
         </div>

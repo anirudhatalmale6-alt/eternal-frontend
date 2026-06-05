@@ -137,27 +137,27 @@ export default function Header() {
 
       {/* Mobile Nav - matches WordPress side panel menu */}
       <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-full bg-[#211f21] z-[9999] pt-[70px] overflow-y-auto shadow-[-18px_0_40px_rgba(0,0,0,0.55)] transition-transform duration-300 ease-in-out ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <a href="/about-company" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+        <a href="/about-company" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
           About
         </a>
-        <a href="/store/category" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+        <a href="/store/category" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
           Store
         </a>
-        <a href="/user/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+        <a href="/user/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
           Profile
         </a>
-        <a href="/verify/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+        <a href="/verify/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
           Verify
         </a>
-        <a href="/top-up/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+        <a href="/top-up/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
           Top-Up
         </a>
         {wpUser ? (
-          <a href="/logout/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          <a href="/logout/" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
             Log Out
           </a>
         ) : (
-          <a href="/login" className="block text-left text-white text-center px-4 py-[14px] text-[11px] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
+          <a href="/login" className="block text-left text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333] transition-colors" onClick={() => setMobileOpen(false)}>
             Account
           </a>
         )}
