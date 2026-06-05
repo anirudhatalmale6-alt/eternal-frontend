@@ -8,7 +8,7 @@ export default function LoginPage() {
     if (cookies.includes('wordpress_logged_in_')) {
       window.location.replace('/account/');
     } else {
-      window.location.replace('/wp-login.php');
+      window.location.replace('/login/');
     }
   }, []);
 

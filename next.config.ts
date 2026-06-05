@@ -23,6 +23,8 @@ const nextConfig = {
       source: '/:path((?!_next|api).*)',
       headers: [
         { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
+        { key: 'CDN-Cache-Control', value: 'max-age=300' },
+        { key: 'Cloudflare-CDN-Cache-Control', value: 'max-age=300' },
       ],
     },
   ],
