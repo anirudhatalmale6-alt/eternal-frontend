@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getPostBySlug, getPageBySlug, formatDate, getAuthorName, getFeaturedImage, getPostCategories, stripHtml, rewriteContentUrls } from '@/lib/wordpress';
 import PageLayout from '@/components/PageLayout';
-import PremiumGate from '@/components/PremiumGate';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -45,8 +44,6 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
   const image = getFeaturedImage(post);
   const author = getAuthorName(post);
   const categories = getPostCategories(post);
-  const isPremium = categories.some(c => c.slug === 'premium');
-
   const content = (
     <div
       className="prose prose-invert prose-red max-w-none
@@ -101,13 +98,7 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
             </div>
           )}
 
-          {isPremium ? (
-            <PremiumGate postId={post.id} excerpt={post.excerpt.rendered}>
-              {content}
-            </PremiumGate>
-          ) : (
-            content
-          )}
+          {content}
 
           <div className="mt-8 pt-4 border-t border-gray-800">
             <Link
