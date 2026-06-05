@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useAuthStore } from '@/stores/auth-store';
 
@@ -24,6 +25,9 @@ export default function Header() {
   const { isLoggedIn, displayName, logout } = useAuthStore();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="bg-black border-b border-[#111111] w-full fixed top-0 z-50">
@@ -71,7 +75,14 @@ export default function Header() {
 
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
-                <Link href={href} className="text-[#878787] hover:text-white transition-colors duration-300">
+                <Link
+                  href={href}
+                  className={`transition-colors duration-300 ${
+                    isActive(href)
+                      ? 'text-white border border-white/40 rounded-sm px-2 py-1'
+                      : 'text-[#878787] hover:text-white'
+                  }`}
+                >
                   {label}
                 </Link>
               </li>
