@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProductCategories } from '@/lib/woocommerce';
-import Sidebar from '@/components/Sidebar';
+import PageLayout from '@/components/PageLayout';
 
 export const metadata = {
   title: 'Store Categories | Eternal',
@@ -12,10 +12,7 @@ export default async function StoreCategoryPage() {
   const categories = await getProductCategories();
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-5">
-
-        <div className="w-full lg:w-[73%]">
+    <PageLayout>
           {/* Store Categories Header */}
           <div className="bg-gradient-to-r from-[#4a0000] via-[#8b0000] to-[#4a0000] py-2.5 rounded mb-2 border-b border-red-950/50">
             <h1 className="text-center text-white font-serif tracking-[0.15em] text-sm italic">Store Categories</h1>
@@ -53,12 +50,6 @@ export default async function StoreCategoryPage() {
                 </Link>
               ))}
           </div>
-        </div>
-
-        <aside className="w-full lg:w-[27%]">
-          <Sidebar />
-        </aside>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

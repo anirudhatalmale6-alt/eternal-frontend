@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getCategoryBySlug, getPosts } from '@/lib/wordpress';
 import PostCard from '@/components/PostCard';
 import Pagination from '@/components/Pagination';
-import Sidebar from '@/components/Sidebar';
+import PageLayout from '@/components/PageLayout';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,9 +29,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const { posts, totalPages } = await getPosts(currentPage, 10, category.id);
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-[75%]">
+    <PageLayout>
           <div className="border-b border-[#570000] pb-3 mb-6">
             <h1 className="text-2xl font-bold text-white">{category.name}</h1>
             {category.description && (
@@ -52,12 +50,6 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
               <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/category/${slug}`} />
             </div>
           )}
-        </div>
-
-        <aside className="w-full lg:w-[25%]">
-          <Sidebar />
-        </aside>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

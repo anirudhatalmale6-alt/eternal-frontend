@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPostBySlug, getPageBySlug, formatDate, getAuthorName, getFeaturedImage, getPostCategories, stripHtml } from '@/lib/wordpress';
-import Sidebar from '@/components/Sidebar';
+import PageLayout from '@/components/PageLayout';
 import PremiumGate from '@/components/PremiumGate';
 
 interface PageProps {
@@ -59,9 +59,8 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
   );
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
-        <article className="w-full lg:w-[75%]">
+    <PageLayout>
+        <article>
           <div className="border-t border-b border-[#570000] py-3 mb-6">
             <div className="flex justify-between items-start">
               <h1
@@ -119,12 +118,7 @@ function ArticleView({ post }: { post: Awaited<ReturnType<typeof getPostBySlug>>
             </Link>
           </div>
         </article>
-
-        <aside className="w-full lg:w-[25%]">
-          <Sidebar />
-        </aside>
-      </div>
-    </div>
+    </PageLayout>
   );
 }
 
@@ -134,9 +128,8 @@ function PageView({ page }: { page: Awaited<ReturnType<typeof getPageBySlug>> & 
   const image = page._embedded?.['wp:featuredmedia']?.[0]?.source_url;
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white">
-      <div className="max-w-[960px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-[75%]">
+    <PageLayout>
+        <div>
           <h1
             className="text-3xl font-bold text-white mb-6 border-b border-[#570000] pb-3"
             dangerouslySetInnerHTML={{ __html: page.title.rendered }}
@@ -160,10 +153,6 @@ function PageView({ page }: { page: Awaited<ReturnType<typeof getPageBySlug>> & 
             dangerouslySetInnerHTML={{ __html: page.content.rendered }}
           />
         </div>
-        <aside className="w-full lg:w-[25%]">
-          <Sidebar />
-        </aside>
-      </div>
-    </div>
+    </PageLayout>
   );
 }

@@ -69,11 +69,14 @@ export default async function Home({ searchParams }: HomeProps) {
               <div className="mb-4">
                 <video
                   controls
+                  playsInline
                   preload="metadata"
-                  poster="https://bunny.eternalorganizer.com/wp-content/uploads/2020/08/eternaljump.jpg"
+                  poster="https://bunny.eternalorganizer.com/wp-content/uploads/2024/11/ejumpsky.png"
                   className="w-full rounded border border-gray-800"
+                  style={{ maxHeight: '400px' }}
                 >
                   <source src="https://bunny.eternalorganizer.com/videos/etnaground.webm" type="video/webm" />
+                  <source src="https://bunny.eternalorganizer.com/videos/etnaground.mp4" type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
