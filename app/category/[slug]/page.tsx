@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
-import { getCategoryBySlug, getPosts, stripHtml } from '@/lib/wordpress';
+import { getCategoryBySlug, getPosts } from '@/lib/wordpress';
 import PostCard from '@/components/PostCard';
+import Pagination from '@/components/Pagination';
 import Sidebar from '@/components/Sidebar';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -17,12 +19,14 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function CategoryPage({ params }: PageProps) {
+export default async function CategoryPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
+  const sp = await searchParams;
+  const currentPage = parseInt(sp.page || '1', 10);
   const category = await getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const posts = await getPosts(1, 20, category.id);
+  const { posts, totalPages } = await getPosts(currentPage, 10, category.id);
 
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-white">
@@ -45,6 +49,7 @@ export default async function CategoryPage({ params }: PageProps) {
               {posts.map((post) => (
                 <PostCard key={post.id} post={post} />
               ))}
+              <Pagination currentPage={currentPage} totalPages={totalPages} basePath={`/category/${slug}`} />
             </div>
           )}
         </div>

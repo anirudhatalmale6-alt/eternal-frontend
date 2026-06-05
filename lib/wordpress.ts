@@ -55,14 +55,35 @@ async function wpFetch<T>(endpoint: string, params: Record<string, string> = {})
   return res.json();
 }
 
-export async function getPosts(page = 1, perPage = 10, categoryId?: number): Promise<WPPost[]> {
+export interface PostsResult {
+  posts: WPPost[];
+  totalPages: number;
+  total: number;
+}
+
+export async function getPosts(page = 1, perPage = 10, categoryId?: number): Promise<PostsResult> {
   const params: Record<string, string> = {
     page: String(page),
     per_page: String(perPage),
     _embed: 'true',
   };
   if (categoryId) params.categories = String(categoryId);
-  return wpFetch<WPPost[]>('/wp/v2/posts', params);
+
+  const url = new URL(`${WP_API_URL}/wp/v2/posts`);
+  Object.entries(params).forEach(([key, value]) => url.searchParams.set(key, value));
+
+  const res = await fetch(url.toString(), {
+    next: { revalidate: 300 },
+    headers: { 'Accept': 'application/json' },
+  });
+
+  if (!res.ok) throw new Error(`WP API error: ${res.status}`);
+
+  const posts: WPPost[] = await res.json();
+  const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1', 10);
+  const total = parseInt(res.headers.get('X-WP-Total') || '0', 10);
+
+  return { posts, totalPages, total };
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {

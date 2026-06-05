@@ -3,12 +3,19 @@ import Link from 'next/link';
 import { Gamepad2, MoreHorizontal, Cpu, Car, Play } from 'lucide-react';
 import Sidebar from '@/components/Sidebar';
 import PostCard from '@/components/PostCard';
-import { getPosts } from '@/lib/wordpress';
+import Pagination from '@/components/Pagination';
+import { getPosts, type PostsResult } from '@/lib/wordpress';
 
-export default async function Home() {
-  let posts: Awaited<ReturnType<typeof getPosts>> = [];
+interface HomeProps {
+  searchParams: Promise<{ page?: string }>;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const params = await searchParams;
+  const currentPage = parseInt(params.page || '1', 10);
+  let result: PostsResult = { posts: [], totalPages: 1, total: 0 };
   try {
-    posts = await getPosts(1, 5);
+    result = await getPosts(currentPage, 5);
   } catch {
     // WP API not reachable yet
   }
@@ -75,7 +82,7 @@ export default async function Home() {
               <div className="mb-4">
                 <Link href="/cearlyn" className="relative block w-full aspect-[16/9] rounded overflow-hidden group border border-purple-900/30">
                   <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2019/02/learn-1.jpg"
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/06/covercearlynweb.jpg"
                     alt="Cearlyn - Princess into an Eternal World"
                     fill
                     className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
@@ -94,7 +101,7 @@ export default async function Home() {
                 {/* Eternal Jump */}
                 <Link href="/jumpgame" className="relative aspect-[3/4] rounded overflow-hidden group border border-orange-900/30">
                   <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/08/eternaljump.jpg"
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/11/ejumpsky.png"
                     alt="Eternal Jump"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -114,7 +121,7 @@ export default async function Home() {
                 {/* Eternal Leap */}
                 <Link href="/leapgame" className="relative aspect-[3/4] rounded overflow-hidden group border border-red-900/30">
                   <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/vipoptimize.jpg"
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/07/leapcoverz.jpg.webp"
                     alt="Eternal Leap"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -134,7 +141,7 @@ export default async function Home() {
                 {/* Eternal Fly */}
                 <Link href="/flygame" className="relative aspect-[3/4] rounded overflow-hidden group border border-gray-700/30">
                   <Image
-                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/cartoptimize.jpg"
+                    src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/11/flysky.png"
                     alt="Eternal Fly"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -162,11 +169,12 @@ export default async function Home() {
           {/* Latest News */}
           <div className="mt-2">
             <h3 className="font-dodger text-sm tracking-[0.15em] text-white mb-4 border-b border-[#570000] pb-2 uppercase">Latest News</h3>
-            {posts.length > 0 ? (
+            {result.posts.length > 0 ? (
               <div className="flex flex-col gap-5">
-                {posts.map((post) => (
+                {result.posts.map((post) => (
                   <PostCard key={post.id} post={post} />
                 ))}
+                <Pagination currentPage={currentPage} totalPages={result.totalPages} basePath="/" />
               </div>
             ) : (
               <>
