@@ -1,46 +1,50 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#080808] pt-[25px] pb-[25px] border-t border-[#111]">
-      <div className="max-w-[960px] mx-auto p-[15px] text-center flex flex-col items-center">
-
-        <a href="https://www.eternalorganizer.com" target="_blank" rel="noopener noreferrer" className="mb-2 hover:opacity-80 transition-opacity">
-          <Image
-            src="https://bunny.eternalorganizer.com/wp-content/uploads/2025/06/ecreative-7.png"
-            alt="Eternal Logo"
-            width={36}
-            height={36}
-          />
-        </a>
-
-        <div className="text-[#666] text-[10px] leading-relaxed mb-1 font-sans">
-          Eternal Creative Networks &copy; {new Date().getFullYear()} All right Reserved.<br />
-          All trademarks are property of their respective owners in the US and other countries.
+    <div className="w-full bg-[#0D0D0D] pt-[30px] pb-[30px]">
+      <div className="max-w-[1200px] mx-auto p-[20px] text-center">
+        <div>
+          <a href="https://www.eternalorganizer.com" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="https://bunny.eternalorganizer.com/wp-content/uploads/2025/06/ecreative-7.png"
+              alt="Eternal Logo"
+              width={44}
+              height={44}
+              className="mx-auto mb-1"
+            />
+          </a>
+          <br />
+          <span className="text-[#878787] text-[13px]">
+            Eternal Creative Networks &copy; {new Date().getFullYear()} All right Reserved.
+          </span>
+          <br />
+          <span className="text-[#878787] text-[13px]">
+            All trademarks are property of their respective owners in the US and other countries.
+          </span>
+          <br />
+          <div className="py-[10px]">
+            <a href="https://status.eternalorganizer.com/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Status</a>
+            {' | '}
+            <a href="/redeem/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Redeem</a>
+            {' | '}
+            <a href="/careers/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Careers</a>
+            {' | '}
+            <a href="/term-conditions/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Term &amp; Conditions</a>
+            {' | '}
+            <a href="/privacy-policy/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Privacy Policy</a>
+            {' | '}
+            <a href="/advertise/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Advertise</a>
+            {' | '}
+            <a href="https://docs.eternalorganizer.com/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Whitepaper</a>
+            {' | '}
+            <a href="/contact/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Contact Us</a>
+            {' | '}
+            <a href="/memberships/" className="text-white text-[13px] hover:text-[#fcfcfc] no-underline">Partnership</a>
+          </div>
+          <div className="h-[100px] md:h-0" />
         </div>
-
-        <div className="text-[#666] text-[10px] font-sans flex flex-wrap justify-center items-center gap-x-1 mt-1.5">
-          <Link href="https://status.eternalorganizer.com/" className="hover:text-white transition-colors">Status</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/redeem" className="hover:text-white transition-colors">Redeem</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/careers" className="hover:text-white transition-colors">Careers</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/term-conditions" className="hover:text-white transition-colors">Term &amp; Conditions</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/advertise" className="hover:text-white transition-colors">Advertise</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="https://docs.eternalorganizer.com/" className="hover:text-white transition-colors">Whitepaper</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-          <span className="text-[#333]">|</span>
-          <Link href="/memberships" className="hover:text-white transition-colors">Partnership</Link>
-        </div>
-
       </div>
-    </footer>
+    </div>
   );
 }
