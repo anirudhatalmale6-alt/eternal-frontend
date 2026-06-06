@@ -77,7 +77,7 @@ export default function Header() {
               >
                 <a
                   href="/about-company/"
-                  className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap flex items-center px-[15px] py-[10px] transition-colors border border-transparent rounded-[15px_2px] ${
+                  className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap flex items-center px-[15px] py-[10px] transition-colors border border-transparent rounded-[15px] ${
                     isActive('/about') ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
                   }`}
                 >
@@ -89,7 +89,7 @@ export default function Header() {
                       <a
                         key={href}
                         href={href}
-                        className="block px-3 py-2 text-[11px] text-[#c9c9c9] hover:text-white hover:bg-white/[0.06] tracking-normal uppercase"
+                        className="block px-3 py-2 font-dodger text-[11px] text-[#c9c9c9] hover:text-white hover:bg-white/[0.06] tracking-[0.12em] uppercase border-b border-[#8b0000] last:border-b-0"
                       >
                         {label}
                       </a>
@@ -102,7 +102,7 @@ export default function Header() {
                 <li key={href} className="relative">
                   <a
                     href={href}
-                    className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap px-[15px] py-[10px] transition-all duration-400 border border-transparent rounded-[15px_2px] inline-block ${
+                    className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap px-[15px] py-[10px] transition-all duration-400 border border-transparent rounded-[15px] inline-block ${
                       isActive(href) ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
                     }`}
                   >
