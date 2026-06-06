@@ -48,11 +48,11 @@ export default function Header() {
 
   return (
     <>
-      {/* Desktop Header - matches .eo-header-desktop */}
+      {/* Desktop Header - matches .eo-header-desktop exactly */}
       <header className="hidden md:block fixed top-0 left-0 right-0 z-[10000] bg-[#0D0D0D] shadow-[0_2px_5px_rgba(0,0,0,0.5)] h-[85px] overflow-visible">
         <div className="max-w-[1170px] mx-auto px-[15px] grid grid-cols-[180px_1fr] items-center min-h-[85px] overflow-visible">
 
-          {/* Logo - matches .eo-header-desktop .head */}
+          {/* Logo */}
           <div className="w-[180px] min-w-[180px] h-[40px] flex items-center leading-none">
             <Link href="/" className="block w-full h-full">
               <Image
@@ -66,25 +66,30 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Nav - matches .eo-header-desktop .head-menu */}
+          {/* Nav */}
           <nav className="ml-auto relative z-[10002] overflow-visible">
             <ul className="list-none m-0 p-0 flex items-center">
-              {/* About with dropdown */}
+              {/* About with dropdown - same style as other nav items */}
               <li
                 className="relative"
                 onMouseEnter={() => setAboutOpen(true)}
                 onMouseLeave={() => setAboutOpen(false)}
               >
-                <button className="font-dodger text-[11px] tracking-[0.12em] text-[#878787] hover:text-white transition-colors whitespace-nowrap flex items-center px-[10px] py-[10px]">
-                  ABOUT <span className="text-[8px] ml-1 font-sans">&#9660;</span>
-                </button>
+                <a
+                  href="/about-company/"
+                  className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap flex items-center px-[15px] py-[10px] transition-colors border border-transparent rounded-[15px_2px] ${
+                    isActive('/about') ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
+                  }`}
+                >
+                  ABOUT <span className="text-[8px] ml-1.5 font-sans">&#9660;</span>
+                </a>
                 {aboutOpen && (
                   <div className="absolute top-full left-0 min-w-[180px] bg-[#111] border border-[#2a2a2a] rounded-md py-2 z-[10003]">
                     {ABOUT_SUBMENU.map(({ href, label }) => (
                       <a
                         key={href}
                         href={href}
-                        className="block px-3 py-2 text-[11px] text-[#c9c9c9] hover:text-white hover:bg-white/[0.06] tracking-normal"
+                        className="block px-3 py-2 text-[11px] text-[#c9c9c9] hover:text-white hover:bg-white/[0.06] tracking-normal uppercase"
                       >
                         {label}
                       </a>
@@ -97,8 +102,8 @@ export default function Header() {
                 <li key={href} className="relative">
                   <a
                     href={href}
-                    className={`font-dodger text-[11px] tracking-[0.12em] whitespace-nowrap px-[10px] py-[10px] transition-colors ${
-                      isActive(href) ? 'text-white' : 'text-[#878787] hover:text-white'
+                    className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap px-[15px] py-[10px] transition-all duration-400 border border-transparent rounded-[15px_2px] inline-block ${
+                      isActive(href) ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
                     }`}
                   >
                     {label}
@@ -109,15 +114,15 @@ export default function Header() {
               <li>
                 {wpUser ? (
                   <span className="flex items-center">
-                    <a href="/user/" className="font-dodger text-[11px] tracking-[0.12em] text-[#669933] hover:text-white px-[10px] py-[10px] whitespace-nowrap">
+                    <a href="/user/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#669933] hover:text-white px-[15px] py-[10px] whitespace-nowrap">
                       {wpUser}
                     </a>
-                    <a href="/logout/" className="font-dodger text-[11px] tracking-[0.12em] text-[#878787] hover:text-white px-[10px] py-[10px] whitespace-nowrap">
+                    <a href="/logout/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[10px] py-[10px] whitespace-nowrap">
                       LOG OUT
                     </a>
                   </span>
                 ) : (
-                  <a href="/login" className="font-dodger text-[11px] tracking-[0.12em] text-[#878787] hover:text-white px-[10px] py-[10px] whitespace-nowrap">
+                  <a href="/login" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[15px] py-[10px] whitespace-nowrap">
                     LOG IN
                   </a>
                 )}
@@ -127,10 +132,10 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Header line - matches .eo-header-line */}
+      {/* Header line */}
       <div className="hidden md:block fixed top-[85px] left-0 right-0 h-[2px] bg-[#383737] shadow-[0_1px_0_#2a2a2a] pointer-events-none z-[9990]" />
 
-      {/* Mobile Header - matches .header .hdr1 */}
+      {/* Mobile Header */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-[2147483600] bg-[#0D0D0D]">
         <div className="flex justify-between items-center px-4 py-3">
           <Link href="/">
@@ -144,7 +149,7 @@ export default function Header() {
             />
           </Link>
           <div
-            className="text-white text-2xl cursor-pointer px-2 relative z-[2147483601]"
+            className="text-white text-[20px] cursor-pointer px-[10px] relative z-[2147483601]"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? '✕' : '☰'}
@@ -152,25 +157,25 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="md:hidden fixed inset-0 bg-black/60 z-[2147483400]"
+          className="md:hidden fixed inset-0 bg-black/[0.62] z-[2147483400]"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
-      {/* Mobile side panel - matches #myTopnav.topnav */}
-      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[70px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">About</a>
-        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Store</a>
-        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Profile</a>
-        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Verify</a>
-        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Top-Up</a>
+      {/* Mobile side panel */}
+      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[60px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black active:bg-[#211f21] active:text-white">About</a>
+        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Store</a>
+        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Profile</a>
+        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Verify</a>
+        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Top-Up</a>
         {wpUser ? (
-          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Log Out</a>
+          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Log Out</a>
         ) : (
-          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger tracking-[0.12em] bg-[#211f21] hover:bg-[#333]">Account</a>
+          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Account</a>
         )}
       </nav>
     </>
