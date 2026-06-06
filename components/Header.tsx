@@ -167,7 +167,7 @@ export default function Header() {
 
       {/* Mobile side panel - matches WP #myTopnav exactly */}
       <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[60px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black border border-[#444] rounded-sm mx-2 mb-1">ABOUT</a>
+        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">ABOUT</a>
         <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">STORE</a>
         <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">PROFILE</a>
         <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">VERIFY</a>
