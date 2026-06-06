@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col gap-[8px] w-full">
+    <aside className="flex flex-col gap-[12px] w-full">
 
       {/* 1. Sync Metamask */}
       <Link

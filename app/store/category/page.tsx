@@ -22,7 +22,7 @@ export default async function StoreCategoryPage() {
           {/* Category Grid */}
           <div className="grid grid-cols-2 gap-4">
             {categories
-              .filter(cat => cat.slug !== 'uncategorized')
+              .filter(cat => cat.slug !== 'uncategorized' && cat.slug !== 'eternal-online-fest')
               .map((cat) => (
                 <Link
                   key={cat.id}

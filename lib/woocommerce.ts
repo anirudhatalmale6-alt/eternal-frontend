@@ -58,7 +58,6 @@ function getHardcodedCategories(): ProductCategory[] {
     { id: 4, name: 'Eternal Platform', slug: 'eternal-platform', description: '', count: 10, image: { src: 'https://bunny.eternalorganizer.com/wp-content/uploads/2019/03/eternal250.png', alt: 'Eternal Platform' } },
     { id: 5, name: 'EternalDEX', slug: 'eternal-dex', description: '', count: 3, image: { src: 'https://bunny.eternalorganizer.com/wp-content/uploads/2017/07/eternaldex.jpg', alt: 'EternalDEX' } },
     { id: 6, name: 'Redeem Rewards', slug: 'eternal-points', description: '', count: 6, image: { src: 'https://bunny.eternalorganizer.com/wp-content/uploads/2021/12/redeem-1.jpg', alt: 'Redeem Rewards' } },
-    { id: 7, name: 'Eternal Online Fest', slug: 'eternal-online-fest', description: '', count: 0, image: { src: 'https://bunny.eternalorganizer.com/wp-content/uploads/2020/08/partnerz.jpg', alt: 'Eternal Online Fest' } },
     { id: 8, name: 'All Products', slug: 'all-products', description: '', count: 10, image: { src: 'https://bunny.eternalorganizer.com/wp-content/uploads/2020/04/allproducts.jpg', alt: 'All Products' } },
   ];
 }

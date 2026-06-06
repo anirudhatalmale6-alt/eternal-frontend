@@ -77,7 +77,7 @@ export default function Header() {
               >
                 <a
                   href="/about-company/"
-                  className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap flex items-center px-[15px] py-[10px] transition-colors border border-transparent rounded-[15px] ${
+                  className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap flex items-center px-[15px] py-[5px] transition-colors border border-transparent rounded-[15px] ${
                     isActive('/about') ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
                   }`}
                 >
@@ -102,7 +102,7 @@ export default function Header() {
                 <li key={href} className="relative">
                   <a
                     href={href}
-                    className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap px-[15px] py-[10px] transition-all duration-400 border border-transparent rounded-[15px] inline-block ${
+                    className={`font-dodger text-[11px] uppercase tracking-[0.12em] whitespace-nowrap px-[15px] py-[5px] transition-all duration-400 border border-transparent rounded-[15px] inline-block ${
                       isActive(href) ? 'text-white border-white/40' : 'text-[#878787] hover:text-white hover:border-white/40'
                     }`}
                   >
@@ -114,15 +114,15 @@ export default function Header() {
               <li>
                 {wpUser ? (
                   <span className="flex items-center">
-                    <a href="/user/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#669933] hover:text-white px-[15px] py-[10px] whitespace-nowrap">
+                    <a href="/user/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#669933] hover:text-white px-[15px] py-[5px] whitespace-nowrap">
                       {wpUser}
                     </a>
-                    <a href="/logout/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[10px] py-[10px] whitespace-nowrap">
+                    <a href="/logout/" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[10px] py-[5px] whitespace-nowrap">
                       LOG OUT
                     </a>
                   </span>
                 ) : (
-                  <a href="/login" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[15px] py-[10px] whitespace-nowrap">
+                  <a href="/login" className="font-dodger text-[11px] uppercase tracking-[0.12em] text-[#878787] hover:text-white px-[15px] py-[5px] whitespace-nowrap">
                     LOG IN
                   </a>
                 )}
@@ -165,17 +165,17 @@ export default function Header() {
         />
       )}
 
-      {/* Mobile side panel */}
+      {/* Mobile side panel - matches WP #myTopnav exactly */}
       <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[60px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black active:bg-[#211f21] active:text-white">About</a>
-        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Store</a>
-        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Profile</a>
-        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Verify</a>
-        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Top-Up</a>
+        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black border border-[#444] rounded-sm mx-2 mb-1">ABOUT</a>
+        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">STORE</a>
+        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">PROFILE</a>
+        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">VERIFY</a>
+        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">TOP-UP</a>
         {wpUser ? (
-          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Log Out</a>
+          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">LOG OUT</a>
         ) : (
-          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-center px-4 py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">Account</a>
+          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">ACCOUNT</a>
         )}
       </nav>
     </>
