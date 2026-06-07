@@ -135,21 +135,21 @@ export default function Header() {
       {/* Header line */}
       <div className="hidden md:block fixed top-[85px] left-0 right-0 h-[2px] bg-[#383737] shadow-[0_1px_0_#2a2a2a] pointer-events-none z-[9990]" />
 
-      {/* Mobile Header */}
+      {/* Mobile Header - matches WP .header .hdr1 */}
       <header className="md:hidden fixed top-0 left-0 right-0 z-[2147483600] bg-[#0D0D0D]">
-        <div className="flex justify-between items-center px-4 py-3">
+        <div className="flex justify-between items-center px-3 py-2">
           <Link href="/">
             <Image
               src="https://bunny.eternalorganizer.com/wp-content/uploads/2019/11/logo2.png"
               alt="Eternal Logo"
-              width={140}
-              height={35}
+              width={110}
+              height={28}
               priority
               className="object-contain"
             />
           </Link>
           <div
-            className="text-white text-[20px] cursor-pointer px-[10px] relative z-[2147483601]"
+            className="text-white text-[16px] cursor-pointer px-[8px] py-[4px] relative z-[2147483601] leading-none"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? '✕' : '☰'}
@@ -166,7 +166,7 @@ export default function Header() {
       )}
 
       {/* Mobile side panel - matches WP #myTopnav exactly */}
-      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[60px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[48px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">ABOUT</a>
         <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">STORE</a>
         <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-left px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">PROFILE</a>
