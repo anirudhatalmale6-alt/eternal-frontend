@@ -165,17 +165,17 @@ export default function Header() {
         />
       )}
 
-      {/* Mobile side panel - 1:1 clone of WP #myTopnav */}
-      <nav className={`md:hidden fixed top-0 right-0 w-[76px] max-w-[260px] h-screen pt-[48px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-all duration-300 ${mobileOpen ? 'w-[260px]' : 'w-0 overflow-hidden'}`}>
-        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">ABOUT</a>
-        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">STORE</a>
-        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">PROFILE</a>
-        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">VERIFY</a>
-        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">TOP-UP</a>
+      {/* Mobile side panel - matching WP #myTopnav */}
+      <nav className={`md:hidden fixed top-0 right-0 w-[260px] h-screen pt-[48px] overflow-y-auto z-[2147483500] shadow-[-18px_0_40px_rgba(0,0,0,0.55)] bg-[#211f21] transition-transform duration-300 ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <a href="/about-company/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">ABOUT</a>
+        <a href="/store/category/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">STORE</a>
+        <a href="/user/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">PROFILE</a>
+        <a href="/verify/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">VERIFY</a>
+        <a href="/top-up/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">TOP-UP</a>
         {wpUser ? (
-          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">LOG OUT</a>
+          <a href="/logout/" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">LOG OUT</a>
         ) : (
-          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black whitespace-nowrap">ACCOUNT</a>
+          <a href="/login" onClick={() => setMobileOpen(false)} className="block text-white text-center px-[16px] py-[14px] text-[11px] font-dodger uppercase tracking-[0.12em] bg-[#211f21] hover:bg-[#ddd] hover:text-black">ACCOUNT</a>
         )}
       </nav>
     </>
