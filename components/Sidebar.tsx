@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const widgetClass = "border border-white/[0.08] rounded-[10px] p-[12px] mb-[2px]";
+
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col gap-[18px] w-full">
+    <aside className="flex flex-col gap-[14px] w-full">
 
       {/* 1. Sync Metamask */}
       <Link
         href="https://www.eternalorganizer.com/sync-metamask/"
-        className="relative w-full aspect-[300/118] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/118] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/10/syncmeta-300x118.png"
@@ -22,7 +24,7 @@ export default function Sidebar() {
       {/* 2. Play Optimize */}
       <Link
         href="https://www.eternalorganizer.com/"
-        className="relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/playoptimize.jpg"
@@ -36,7 +38,7 @@ export default function Sidebar() {
       {/* 3. VIP Optimize */}
       <Link
         href="https://www.eternalorganizer.com/dashboards/"
-        className="relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/vipoptimize.jpg"
@@ -50,7 +52,7 @@ export default function Sidebar() {
       {/* 4. Cart Optimize */}
       <Link
         href="https://www.eternalorganizer.com/cart/"
-        className="relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/cartoptimize.jpg"
@@ -64,7 +66,7 @@ export default function Sidebar() {
       {/* 5. Top Up */}
       <Link
         href="https://www.eternalorganizer.com/top-up/"
-        className="relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2020/05/topupoptimize.jpg"
@@ -108,7 +110,7 @@ export default function Sidebar() {
       {/* 8. Jump Game (Banner Vertical) */}
       <Link
         href="https://www.eternalorganizer.com/jumpgame"
-        className="relative w-full aspect-[222/515] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[222/515] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2024/09/boardlanrete-jpg.avif"
@@ -122,7 +124,7 @@ export default function Sidebar() {
       {/* 9. License VIP */}
       <Link
         href="https://www.eternalorganizer.com/license"
-        className="relative w-full aspect-square block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-square block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2021/04/vipmedia.jpg.webp"
@@ -136,7 +138,7 @@ export default function Sidebar() {
       {/* 10. Learn */}
       <Link
         href="https://www.eternalorganizer.com/learn"
-        className="relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded overflow-hidden"
+        className={`relative w-full aspect-[300/97] block hover:opacity-80 transition-opacity rounded-[10px] overflow-hidden ${widgetClass}`}
       >
         <Image
           src="https://bunny.eternalorganizer.com/wp-content/uploads/2019/02/learn-1.jpg"
