@@ -5,7 +5,7 @@ const widgetClass = "border border-white/[0.08] rounded-[10px] p-[12px] mb-[2px]
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col gap-[14px] w-full">
+    <aside className="flex flex-col gap-[20px] w-full">
 
       {/* 1. Sync Metamask */}
       <Link
